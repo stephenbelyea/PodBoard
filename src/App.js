@@ -1,21 +1,88 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Router, Route, IndexLink, IndexRoute, hashHistory } from 'react-router';
 import './App.css';
 
+const Nav = () => (
+  <nav>
+    <IndexLink activeClassName='active' to='/'>Home</IndexLink>&nbsp;
+    <IndexLink activeClassName='active' to='/address'>Address</IndexLink>&nbsp;
+    <IndexLink activeClassName='active' to='/about'>About</IndexLink>&nbsp;
+    <IndexLink activeClassName='active' to='/namedComponent'>Named Components</IndexLink>
+  </nav>
+)
+
+const Container = (props) => <div>
+  <Nav />
+  {props.children}
+</div>
+
+const Home = () => <h1>Hello from Home!</h1>
+
+const Address = (props) => <div>
+  <br />
+  <IndexLink activeClassName='active' to='/address'>Twitter Feed</IndexLink>&nbsp;
+  <IndexLink activeClassName='active' to='/address/instagram'>Instagram Feed</IndexLink>&nbsp;
+  <IndexLink 
+    activeClassName='active' 
+    to={{ 
+      pathname: '/address/query', 
+      query: { message: 'Hello from Route Query' } 
+    }}>Route Query</IndexLink>
+  <h1>We are located at 555 Jackson St.</h1>
+  {props.children}
+</div>
+
+const About = (props) => (
+  <div>
+    <h3>Welcome to the About Page</h3>
+    { props.params.name && <h2>Hello, {props.params.name}</h2>}
+  </div>
+)
+
+const Query = (props) => (
+  <h2>{props.location.query.message}</h2>
+)
+
+const Instagram = () => <h3>Instagram Feed</h3>
+const TwitterFeed = () => <h3>Twitter Feed</h3>
+
+const NotFound = () => <h1>404.. This page is not found!</h1>
+
+const NamedComponents = (props) => (
+  <div>
+    {props.title}<br />
+    {props.subTitle}
+  </div>
+)
+const Title = () => (
+  <h1>Hello from Title Component</h1>
+)
+const SubTitle = () => (
+  <h1>Hello from SubTitle Component</h1>
+)
+
+
+
 class App extends Component {
-  render() {
+  render () {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <Router history={hashHistory}>
+        <Route path='/' component={Container}>
+          <IndexRoute component={Home} />
+          <Route path='address' component={Address}>
+            <IndexRoute component={TwitterFeed} />
+            <Route path='instagram' component={Instagram} />
+            <Route path='query' component={Query} />
+          </Route>
+          <Route path='/about/(:name)' component={About} />
+          <Route path='/namedComponent' component={NamedComponents}>
+            <IndexRoute components={{ title: Title, subTitle: SubTitle }} />
+          </Route>
+          <Route path='*' component={NotFound} />
+        </Route>
+      </Router>
+    )
   }
 }
 
-export default App;
+export default App
