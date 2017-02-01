@@ -36,7 +36,7 @@ class Nav extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">PodBoard</a>
+            <IndexLink to="/" className="navbar-brand">PodBoard</IndexLink>
           </div>
           <div className={collapseClass} id="navbar-collapse">
             <ul className="nav navbar-nav">
