@@ -6,3 +6,18 @@ body {
 .nav .active {
   text-decoration: underline !important;
 }
+.social-posts li {
+  margin-bottom: 0.75em;
+}
+.social-posts li p {
+  margin-bottom: 0;
+}
+.social-posts li .date,
+.social-posts li .type {
+  color: grey;
+  font-size: 0.875em;
+}
+.social-posts li button {
+  margin-right: 0.25em;
+  display: inline-block;
+}

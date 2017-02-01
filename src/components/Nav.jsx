@@ -42,6 +42,7 @@ class Nav extends React.Component {
             <ul className="nav navbar-nav">
               <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
               <li><IndexLink to="/login" activeClassName="active">Login</IndexLink></li>
+              <li><IndexLink to="/social-posts" activeClassName="active">Social Posts</IndexLink></li>
             </ul>
           </div>
         </div>
