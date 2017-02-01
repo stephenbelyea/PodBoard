@@ -2,10 +2,7 @@ import React from 'react';
 import Nav from '../components/Nav';
 
 class Layout extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render () {
+  render (props) {
     return (
       <div id="wrap">
         <Nav />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
+import { IndexLink } from 'react-router';
 
 class Nav extends React.Component {
   constructor() {
@@ -10,7 +10,6 @@ class Nav extends React.Component {
   }
   
   navbarToggle(e) {
-    let btn = e.currentTarget;
     let tog = !this.state.toggle;
     this.setState({toggle: tog});
   }
