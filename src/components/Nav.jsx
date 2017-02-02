@@ -40,8 +40,7 @@ class Nav extends React.Component {
           </div>
           <div className={collapseClass} id="navbar-collapse">
             <ul className="nav navbar-nav">
-              <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-              <li><IndexLink to="/login" activeClassName="active">Login</IndexLink></li>
+              <li><IndexLink to="/" activeClassName="active">Login</IndexLink></li>
               <li><IndexLink to="/social-posts" activeClassName="active">Social Posts</IndexLink></li>
             </ul>
           </div>

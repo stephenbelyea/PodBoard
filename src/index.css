@@ -18,6 +18,16 @@ body {
   font-size: 0.875em;
 }
 .social-posts li button {
-  margin-right: 0.25em;
+  margin: 0.5em 0.25em 0.5em 0;
   display: inline-block;
+}
+.social-posts li .btn-link {
+  color:forestgreen !important;
+  text-decoration: underline !important;
+}
+.social-posts [aria-hidden="true"] {
+  display: none;
+}
+.social-posts input[type="text"] {
+  width: 100%;
 }

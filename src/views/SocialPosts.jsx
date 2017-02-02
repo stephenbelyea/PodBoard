@@ -1,36 +1,69 @@
 import React from 'react';
 
+import PostList from '../components/PostList';
+
 class SocialPosts extends React.Component {
   constructor() {
     super();
     this.state = {
-
+      posts: [
+        {
+          type: 'Twitter',
+          date: '1 Feb 2017',
+          text: 'Like out theme song? Check out more by Valery & The Greedies: https://valerythegreedies.bandcamp.com/',
+          approve: false,
+          editing: false
+        },
+        {
+          type: 'Twitter',
+          date: '31 Jan 2017',
+          text: 'Groundhog Day is just around the corner! We thought it\'d be fitting to #dustoff the film. #NewEpisode Friday!',
+          approve: false,
+          editing: false
+        },
+        {
+          type: 'Twitter',
+          date: '30 Jan 2017',
+          text: '"He looks young. Well, younger than he is now." Find out who on Friday. #thedustoff',
+          approve: false,
+          editing: false
+        }
+      ]
     };
   }
+
+  handleApprove(i) {
+    let approve = !this.state.posts[i].approve;
+    let posts = this.state.posts;
+    posts[i].approve = approve;
+    this.setState({ posts: posts });
+  }
+
+  handleEdit(i) {
+    let editing = !this.state.posts[i].editing;
+    let posts = this.state.posts;
+    posts[i].editing = editing;
+    if ( !editing ) {
+      posts[i].approve = editing;
+    }
+    this.setState({ posts: posts });
+  }
+
+  handleTextEdit(e, i) {
+    let tar = e.currentTarget;
+    let posts = this.state.posts;
+    posts[i].text = tar.value;
+    this.setState({ posts: posts });
+  }
+
   render () {
     return (
       <article className="social-posts">
         <h1>Social Posts</h1>
-        <ul>
-          <li>
-            <p className="date">Twitter | 9:30 AM - 1 Feb 2017</p>
-            <p className="text">Like out theme song? Check out more by Valery & The Greedies: https://valerythegreedies.bandcamp.com/</p>
-            <p className="type">
-              <button className="btn-primary small">Edit</button>
-              <button className="btn-success small">Approve</button>
-            </p>
-          </li>
-          <li>
-            <p className="date">Twitter | 9:21 AM - 31 Jan 2017</p>
-            <p className="text">Groundhog Day is just around the corner! We thought it'd be fitting to #dustoff the film. #NewEpisode Friday!</p>
-            <p className="type"></p>
-          </li>
-          <li>
-            <p className="date">Twitter | 8:55 AM - 30 Jan 2017</p>
-            <p className="text">"He looks young. Well, younger than he is now." Find out who on Friday. #thedustoff</p>
-            <p className="type"></p>
-          </li>
-        </ul>
+        <PostList posts={this.state.posts} 
+                  handleApprove={this.handleApprove.bind(this)}
+                  handleEdit={this.handleEdit.bind(this)} 
+                  handleTextEdit={this.handleTextEdit.bind(this)} />
       </article>
     )
   }
