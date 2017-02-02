@@ -57,13 +57,16 @@ class SocialPosts extends React.Component {
   }
 
   render () {
+    const handlers = [
+      this.handleApprove.bind(this),
+      this.handleEdit.bind(this),
+      this.handleTextEdit.bind(this)
+    ];
     return (
       <article className="social-posts">
         <h1>Social Posts</h1>
         <PostList posts={this.state.posts} 
-                  handleApprove={this.handleApprove.bind(this)}
-                  handleEdit={this.handleEdit.bind(this)} 
-                  handleTextEdit={this.handleTextEdit.bind(this)} />
+                  handlers={handlers} />
       </article>
     )
   }

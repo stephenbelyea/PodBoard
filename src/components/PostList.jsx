@@ -10,9 +10,7 @@ class PostList extends React.Component {
         <PostItem key={index} 
                   index={index} 
                   post={post} 
-                  handleApprove={this.props.handleApprove} 
-                  handleEdit={this.props.handleEdit} 
-                  handleTextEdit={this.props.handleTextEdit} />
+                  handlers={this.props.handlers} />
       ));
     }
     else return [];
