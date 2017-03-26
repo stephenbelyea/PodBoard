@@ -6,19 +6,35 @@ body {
 .nav .active {
   text-decoration: underline !important;
 }
+.social-posts ul {
+  list-style: none;
+  padding: 0;
+  margin: 2em 0;
+}
 .social-posts li {
-  margin-bottom: 0.75em;
+  margin-bottom: 1.5em;
+  border: solid 1px #ccc;
+  padding: 1.25em 1.5em .5em;
+  border-radius: .35em;
 }
 .social-posts li p {
-  margin-bottom: 0;
+  margin-bottom: .5em;
 }
-.social-posts li .date,
-.social-posts li .type {
+.social-posts li .date {
   color: grey;
-  font-size: 0.875em;
+  font-size: .875em;
+}
+.social-posts li .date strong {
+  margin-right: .5em;
+}
+.social-posts li .date strong:after {
+  content: " | ";
+  margin-left: .6em;
+  font-weight: lighter;
+  opacity: .5;
 }
 .social-posts li button {
-  margin: 0.5em 0.25em 0.5em 0;
+  margin: .75em .25em .5em 0;
   display: inline-block;
 }
 .social-posts li .btn-link {

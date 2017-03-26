@@ -9,7 +9,7 @@ class PostItem extends React.Component {
     let editClass = (post.editing)? "btn-info small" : "btn-primary small";
     return (
       <li className="post-item" data-index={index}>
-        <p className="date">{post.type} | {post.date}</p>
+        <p className="date"><strong>{post.type}</strong> {post.date}</p>
         <p className="text" aria-hidden={post.editing}>{post.text}</p>
         <p className="text-edit" aria-hidden={!post.editing}>
           <input type="text" 
